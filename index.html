@@ -22,10 +22,17 @@
   }).addTo(map);
 
   // load GeoJSON from an external file
-  fetch("countries.geojson").then(res => res.json()).then(data => {
+  fetch("map_airport.geojson").then(res => res.json()).then(data => {
     // add GeoJSON layer to the map once the file is loaded
-    L.geoJson(data).addTo(map);
-  });
+    L.geoJson(data,{
+      pointToLayer: function(feature,layer){
+        var marker = L.marker(layer);
+        marker.addTo(map)
+        return marker;
+      }
+    }, 
+             );
+});
 
   </script>
 </body>

@@ -7,7 +7,8 @@ var osmLayer = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 map.addLayer(osmLayer);
 
 $.getJSON('map_airport.geojson',function(data){
-    L.geoJson(data,{
+	var geoLayer = L.geoJson(json).addTo(map);
+    /*L.geoJson(data,{
       pointToLayer: function(feature,layer){
         var marker = L.marker(layer,{icon: Icon});
         marker.bindPopup('<b>AIRPORT NAME : </b>'+feature.properties.name+' ('+feature.properties.abbrev+')<br>\
@@ -16,8 +17,8 @@ $.getJSON('map_airport.geojson',function(data){
         marker.addTo(map)
         return marker;
       }
-    }, 
-             );
+    },
+             );*/
 });
 var Icon = new L.Icon({
   	iconUrl: 'https://cdn-icons-png.flaticon.com/512/0/614.png',

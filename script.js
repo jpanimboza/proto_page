@@ -6,16 +6,10 @@ var osmLayer = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     
 map.addLayer(osmLayer);
 
-$.getJSON('map_airport.geojson',function(json){
-	var geoLayer = L.geoJson(json).addTo(map);
-    	L.geoJson(json,{
-      		pointToLayer: function(feature,layer){
-        		var marker = L.marker(layer,/*{icon: Icon}*/);
-        		marker.bindPopup('<b>AIRPORT NAME : </b>'+feature.properties.name+' ('+feature.properties.abbrev+')<br>\
-        		<b>TYPE OF AIPORT : </b>'+feature.properties.type+'<br>\
-        		<a href="'+feature.properties.wikipedia+'">Wikipedia</a>').addTo(map);
-       	 		marker.addTo(map)
-        		return marker;
-      		}
-    	});
+var museosand = L.geoJson(null);
+
+$.getJSON("map_airport.geojson", function (data) {
+	museosand.addData(data);
 });
+
+museosand.addTo(map);

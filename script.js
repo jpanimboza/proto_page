@@ -7,7 +7,7 @@ var osmLayer = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 map.addLayer(osmLayer);
 
 $.getJSON('map_airport.geojson',function(data){
-	var geoLayer = L.geoJson(json).addTo(map);
+	var geoLayer = L.geoJson(data).addTo(map);
     /*L.geoJson(data,{
       pointToLayer: function(feature,layer){
         var marker = L.marker(layer,{icon: Icon});

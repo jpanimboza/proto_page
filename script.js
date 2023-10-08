@@ -6,14 +6,20 @@ var cartodbLayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{
 	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://cartodb.com/attributions">CartoDB</a>'
 }).addTo(map);
 
-// Función para ventana de datos al hacer click sobre el punto
 
-function popup(feature, layer) { 
-	if (feature.properties && feature.properties.nomb_mus) 
-	{ 
-		layer.bindPopup( "<strong>" + feature.properties.nomb_mus + "</strong><br/>" + feature.properties.municipio + ". " + feature.properties.provincia ); 
-	} 
-}
+function onEachFeature(feature, layer) {
+    layer.bindPopup(feature.properties.City + ", " + feature.properties.State + ", " + feature.properties.Country);
+  }
 
-//Cargar GeoJSON desde un archivo externo
-var geojsonLayer = new L.geoJson.ajax("https://jpanimboza.github.io/proto_docs/map_airport.geojson").addTo(map);
+  $.getJSON("map_airport.geoJSON", function (cities) { // pull data from external file
+    L.geoJson(cities, {
+      onEachFeature: onEachFeature,
+      pointToLayer: function (feature, latlng) {
+        switch (feature.properties.Remember) {
+          case '1': return L.marker(latlng, {icon: visitedIcon});
+          case '?': return L.marker(latlng, {icon: uncertainIcon});
+          case '0': return L.marker(latlng, {icon: uncertainIcon});
+        }
+      }
+    }).addTo(map);
+  })

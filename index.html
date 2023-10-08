@@ -27,6 +27,9 @@
     L.geoJson(data,{
       pointToLayer: function(feature,layer){
         var marker = L.marker(layer);
+        marker.bindPopup('<b>AIRPORT NAME : </b>'+feature.properties.name+' ('+feature.properties.abbrev+')<br>\
+        <b>TYPE OF AIPORT : </b>'+feature.properties.type+'<br>\
+        <a href="'+feature.properties.wikipedia+'">Wikipedia</a>').addTo(map);
         marker.addTo(map)
         return marker;
       }

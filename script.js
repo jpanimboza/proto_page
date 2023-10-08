@@ -1,7 +1,7 @@
 var map = L.map('map').setView([48.833, 2.333],5); 
 
 var osmLayer = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Emilie Locquette'
+  attribution: 'Jonathan'
   }).addTo(map);
     
 map.addLayer(osmLayer);

@@ -1,54 +1,16 @@
-var map = L.map('map').setView([48.833, 2.333],5); 
+// Función que se ejecuta una vez que se carga el DOM
+document.addEventListener("DOMContentLoaded", function() {
+    // Crea un mapa y establece sus coordenadas iniciales
+    var mymap = L.map('map').setView([51.505, -0.09], 13);
 
-var osmLayer = L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: 'Emilie Locquette'
-  }).addTo(map);
-    
-map.addLayer(osmLayer);
+    // Agrega una capa de mapa base de OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mymap);
 
-$.getJSON("https://jpanimboza.github.io/proto_docs/map_airport.geojson",function(data){
-    L.geoJson(data,{
-      pointToLayer: function(feature,layer){
-        var marker = L.marker(layer,/* {icon: Icon}*/);
-/*        marker.bindPopup('<b>AIRPORT NAME : </b>'+feature.properties.name+' ('+feature.properties.abbrev+')<br>\
-        <b>TYPE OF AIPORT : </b>'+feature.properties.type+'<br>\
-        <a href="'+feature.properties.wikipedia+'">Wikipedia</a>').addTo(map);*/
-        marker.addTo(map)
-        return marker;
-      }
-    }, 
-             );
+    // Agrega un marcador al mapa
+    var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+    // Agrega un pop-up al marcador
+    marker.bindPopup("<b>¡Hola!</b><br>Esto es un marcador.").openPopup();
 });
-
-/*var Icon = new L.Icon({
-  	iconUrl: 'https://cdn-icons-png.flaticon.com/512/0/614.png',
-  	iconSize: [40,40],
-  	iconAnchor: [12, 41],
-  	popupAnchor: [1, -34],
-  	shadowSize: [41, 41]
-	});	*/
-function colorPuntos(d) { 
-	return d == "mid" ? '#FF0000' : 
-	d == "mid and military" ? '#00FF00' : 
-	d == "major" ? '#0000FF' : 
-	d == "major and military" ? '#FF00FF' :
-		'#000000'; 
-};
-var MarkerOptions = {
-	radius: 8,
-	fillColor: "#ff7800",
-	color: "#000",
-	weight: 1,
-	opacity: 1,
-	fillOpacity: 0.8
-};
-function estilo_monumentos (feature) {
-		return{
- 			radius: 7,
-			fillColor: colorPuntos(feature.properties.type), 
-			color: colorPuntos(feature.properties.type), 
-			weight: 1,
-			opacity : 1,
- 			fillOpacity : 0.8
-	};
-};

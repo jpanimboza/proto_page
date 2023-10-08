@@ -22,7 +22,7 @@
   }).addTo(map);
 
   // load GeoJSON from an external file
-  fetch("places.geojson").then(res => res.json()).then(data => {
+  fetch("countries.geojson").then(res => res.json()).then(data => {
     // add GeoJSON layer to the map once the file is loaded
     L.geoJson(data).addTo(map);
   });

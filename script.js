@@ -15,21 +15,9 @@ function popup(feature, layer) {
 	} 
 }
 
-// Cargar GeoJSON desde un archivo externo
-
-// $.getJSON("museos_wfsdera.geojson", function (data) {
-// var museosand = new L.geoJson(data, {
-// 	onEachFeature: popup
-// 	}).addTo(map);
-// })
-
-
-var museosand = L.geoJson(null, {
-	onEachFeature: popup
-});
+//Cargar GeoJSON desde un archivo externo
 
 $.getJSON("map_airport.geojson", function (data) {
-	museosand.addData(data);
-});
+var museosand = new L.geoJson(data).addTo(map);
+})
 
-museosand.addTo(map);

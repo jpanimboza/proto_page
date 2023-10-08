@@ -16,8 +16,4 @@ function popup(feature, layer) {
 }
 
 //Cargar GeoJSON desde un archivo externo
-
-$.getJSON("map_airport.geojson", function (data) {
-var museosand = new L.geoJson(data).addTo(map);
-})
-
+var geojsonLayer = new L.geoJson.ajax("https://jpanimboza.github.io/proto_docs/map_airport.geojson").addTo(map);

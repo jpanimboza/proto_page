@@ -1,0 +1,73 @@
+var places = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Tallinn",
+        "size": 159
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.7357177734375,
+          59.43390314475794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Haapsalu",
+        "size": 11
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.543701171875,
+          58.945758027716465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Parnu",
+        "size": 32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.510498046875,
+          58.38011855064708
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "name": "Tartu",
+        "size": 39
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.728363037109375,
+          58.37147760096145
+        ]
+      }
+    }
+  ]
+};
